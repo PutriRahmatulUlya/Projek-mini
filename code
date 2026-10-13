@@ -1,0 +1,75 @@
+import java.util.Scanner; // Komponen: Scanner
+
+// Komponen: Class
+class Mahasiswa {
+    // Komponen: Variable & Data Type
+    String nama;
+    String NIM;
+    double nilai;
+
+    // Constructor untuk inisialisasi object
+    public Mahasiswa(String nama, String NIM, double nilai) {
+        this.nama = nama;
+        this.NIM = NIM;
+        this.nilai = nilai;
+    }
+
+    // Komponen: Method
+    public void tampilkanData() {
+        System.out.println("Nama  : " + nama);
+        System.out.println("NIM   : " + NIM);
+        System.out.println("Nilai : " + nilai);
+    }
+
+    // Komponen: Method dengan If/Else
+    public void cekKelulusan() {
+        // Asumsi nilai minimal lulus adalah 60
+        // Komponen: if / else
+        if (nilai >= 60) {
+            System.out.println("Status: LULUS");
+        } else {
+            System.out.println("Status: TIDAK LULUS");
+        }
+    }
+}
+
+public class MiniProjek {
+    public static void main(String[] args) {
+        // Array untuk menyimpan minimal 3 object mahasiswa
+        try (Scanner input = new Scanner(System.in)) {
+            // Array untuk menyimpan minimal 3 object mahasiswa
+            Mahasiswa[] daftarMahasiswa = new Mahasiswa[3];
+            
+            System.out.println("=== INPUT DATA MAHASISWA ===");
+            
+            // Komponen: Loop (Perulangan untuk input)
+            for (int i = 0; i < 3; i++) {
+                System.out.println("\nData Mahasiswa ke-" + (i + 1));
+                
+                System.out.print("Masukkan Nama  : ");
+                String nama = input.nextLine();
+                
+                System.out.print("Masukkan NIM   : ");
+                String nim = input.nextLine();
+                
+                System.out.print("Masukkan Nilai : ");
+                double nilai = input.nextDouble();
+                input.nextLine(); // Membersihkan buffer enter (newline)
+                
+                // Komponen: Object (Membuat object baru dan memasukkannya ke array)
+                daftarMahasiswa[i] = new Mahasiswa(nama, nim, nilai);
+            }
+            
+            System.out.println("\n==================================");
+            System.out.println("=== HASIL OUTPUT DATA MAHASISWA ===");
+            System.out.println("==================================");
+            
+            // Komponen: Loop (Perulangan untuk menampilkan data)
+            for (int i = 0; i < daftarMahasiswa.length; i++) {
+                System.out.println("\n--- Mahasiswa ke-" + (i + 1) + " ---");
+                daftarMahasiswa[i].tampilkanData(); // Memanggil method
+                daftarMahasiswa[i].cekKelulusan();  // Memanggil method
+            }
+        }
+    }
+}
